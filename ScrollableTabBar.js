@@ -8,7 +8,6 @@ const {
   StyleSheet,
   ScrollView,
   Text,
-  Platform,
   Dimensions,
 } = ReactNative;
 const Button = require("./Button");
@@ -114,16 +113,10 @@ const ScrollableTabBar = createReactClass({
       2;
     newScrollX = newScrollX >= 0 ? newScrollX : 0;
 
-    if (Platform.OS === "android") {
-      this._scrollView.scrollTo({ x: newScrollX, y: 0, animated: false });
-    } else {
-      const rightBoundScroll =
-        this._tabContainerMeasurements.width -
-        this._containerMeasurements.width;
-      newScrollX =
-        newScrollX > rightBoundScroll ? rightBoundScroll : newScrollX;
-      this._scrollView.scrollTo({ x: newScrollX, y: 0, animated: false });
-    }
+    const rightBoundScroll =
+      this._tabContainerMeasurements.width - this._containerMeasurements.width;
+    newScrollX = newScrollX > rightBoundScroll ? rightBoundScroll : newScrollX;
+    this._scrollView.scrollTo({ x: newScrollX, y: 0, animated: false });
   },
 
   updateTabUnderline(position, pageOffset, tabCount) {
