@@ -75,7 +75,7 @@ const ScrollableTabView = createReactClass({
 
     const callListeners = this._polyfillAnimatedValue(scrollValue);
     scrollXIOS.addListener(({ value }) =>
-      callListeners(value / this.state.containerWidth),
+      callListeners(value / this.state.containerWidth)
     );
 
     return {
@@ -219,7 +219,7 @@ const ScrollableTabView = createReactClass({
         }}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { x: this.state.scrollXIOS } } }],
-          { useNativeDriver: true, listener: this._onScroll },
+          { useNativeDriver: true, listener: this._onScroll }
         )}
         onMomentumScrollBegin={this._onMomentumScrollBeginAndEnd}
         onMomentumScrollEnd={this._onMomentumScrollBeginAndEnd}
@@ -245,7 +245,7 @@ const ScrollableTabView = createReactClass({
           key={child.key}
           shouldUpdated={this._shouldRenderSceneKey(
             idx,
-            this.state.currentPage,
+            this.state.currentPage
           )}
           style={{ width: this.state.containerWidth }}
         >
@@ -314,7 +314,7 @@ const ScrollableTabView = createReactClass({
     containerWidthAnimatedValue.__makeNative();
     scrollValue = Animated.divide(
       this.state.scrollXIOS,
-      containerWidthAnimatedValue,
+      containerWidthAnimatedValue
     );
     this.setState({ containerWidth: width, scrollValue });
     this.requestAnimationFrame(() => {

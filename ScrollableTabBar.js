@@ -78,7 +78,7 @@ const ScrollableTabBar = createReactClass({
     if (
       this.necessarilyMeasurementsCompleted(
         position,
-        position === lastTabPosition,
+        position === lastTabPosition
       )
     ) {
       this.updateTabPanel(position, pageOffset);
@@ -219,7 +219,7 @@ const ScrollableTabBar = createReactClass({
                 page,
                 isTabActive,
                 this.props.goToPage,
-                this.measureTab.bind(this, page),
+                this.measureTab.bind(this, page)
               );
             })}
             <Animated.View
